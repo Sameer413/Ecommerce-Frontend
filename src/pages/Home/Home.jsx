@@ -1,10 +1,19 @@
 import React from 'react'
 import Header from '../../components/Layout/Header'
+import Category from '../../components/Home/Category'
+import Carousel from '../../components/Home/Carousel'
 
 const Home = () => {
     return (
-        <div>
-            this is home
+        <div className="lg:pt-14 pt-24">
+            {/* Category */}
+            <div className="bg-white border-b-[1px] overflow-x-scroll shadow-sm">
+                <Category />
+            </div>
+            {/* Coursel */}
+            <div className="lg:my-2 my-1">
+                <Carousel />
+            </div>
         </div>
     )
 }
