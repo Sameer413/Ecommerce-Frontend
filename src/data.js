@@ -65,3 +65,48 @@ export const category = [
         imgUrl: "https://rukminim2.flixcart.com/fk-p-flap/128/128/image/05d708653beff580.png?q=100"
     },
 ]
+
+export const TrendingData = [
+    {
+        imgUrl: "asset/trimmer.webp",
+        title: "Best of Trimmers",
+        pricing: "FROM ₹399",
+        brands: "Realme, Mi, Philips & more"
+    },
+    {
+        imgUrl: "asset/monitor.webp",
+        title: "Monitor",
+        pricing: "SHOP NOW",
+        brands: "Asus, Dell, BenQ & more"
+    },
+    {
+        imgUrl: "asset/monitors.webp",
+        title: "Monitors",
+        pricing: "SHOP NOW",
+        brands: "Asus, Dell, BenQ & more"
+    },
+    {
+        imgUrl: "asset/camera.webp",
+        title: "Top Mirrorless Cameras",
+        pricing: "SHOP NOW",
+        brands: "Sony, Nikon, Canon"
+    },
+    {
+        imgUrl: "asset/printer.webp",
+        title: "Printers",
+        pricing: "SHOP NOW",
+        brands: "HP & EPSON"
+    },
+    {
+        imgUrl: "asset/remoteToys.webp",
+        title: "Remote Control Toys",
+        pricing: "FROM ₹699",
+        brands: "Cars, Plans & more"
+    },
+    {
+        imgUrl: "asset/game.webp",
+        title: "Gaming",
+        pricing: "SHOP NOW",
+        brands: "Console, PC & more"
+    },
+]

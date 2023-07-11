@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../components/Layout/Header'
 import Category from '../../components/Home/Category'
 import Carousel from '../../components/Home/Carousel'
+import Trending from '../../components/Home/Trending'
 
 const Home = () => {
     return (
@@ -14,6 +15,13 @@ const Home = () => {
             <div className="lg:my-2 my-1">
                 <Carousel />
             </div>
+            <div className="lg:my-2 my-1">
+                <Trending />
+            </div>
+            <div className="lg:my-2 my-1 ">
+                <Trending />
+            </div>
+
         </div>
     )
 }
