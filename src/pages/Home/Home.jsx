@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../../components/Layout/Header'
 import Category from '../../components/Home/Category'
 import Carousel from '../../components/Home/Carousel'
 import Trending from '../../components/Home/Trending'
