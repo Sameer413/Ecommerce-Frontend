@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductFilter from '../../container/ProductFilter'
 import ProductCard from '../../components/Product/ProductCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts } from '../../redux/actions/ProductActions'
 
 const Products = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllProducts())
+    }, [])
+
+
+    const { loading, products, error, message } = useSelector(
+        state => state.product
+    )
+
+
+
     return (
         <div className="w-full lg:pt-14 pt-24">
             <div className="flex lg:m-4 m-2 gap-3">
@@ -29,8 +45,15 @@ const Products = () => {
                             <div className="cursor-pointer text-base font-normal pb-2">Newest First</div>
                         </div>
                     </div>
-                    <ProductCard />
-                    <ProductCard />
+
+                    {products.length > 0 ? (
+                        products.map(item => (
+                            <ProductCard key={item._id} product={item} />
+                        ))
+                    ) : (
+                        <h1>not found</h1>
+                    )}
+
                 </div>
             </div>
         </div>

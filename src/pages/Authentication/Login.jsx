@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bg from '../../assets/bgAuth.png'
-import { Link } from 'react-router-dom'
+import { Link, redirect, } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/actions/UserActions.js'
 
 const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+
+    const submitHandler = e => {
+        e.preventDefault();
+        dispatch(login(email, password));
+
+        console.log(email, password);
+    }
+
     return (
 
         <div className="flex justify-center lg:my-20 mt-28 mb-3 lg:w-auto w-[90%">
@@ -17,13 +32,14 @@ const Login = () => {
                 </div>
 
                 <div className="pt-14 lg:px-9 pb-4 mx-auto w-[60%] box-border">
-                    <form action="" className="lg:mx-5 mx-0">
+                    <form onSubmit={submitHandler} className="lg:mx-5 mx-0">
                         <div className="w-full mb-6 text-base ">
                             <input
                                 className="w-full outline-none border-b-2 border-black placeholder:text-black placeholder:font-semibold py-2"
                                 placeholder='Email'
                                 type="email"
-                                name=""
+                                name="email"
+                                onChange={e => setEmail(e.target.value)}
                             />
                             {/* <label
                                 className="absolute top-0 left-0 pointer-events-none"
@@ -35,15 +51,20 @@ const Login = () => {
                             <input
                                 className="w-full outline-none border-b-2 border-black placeholder:text-black placeholder:font-semibold py-2"
                                 placeholder='Password'
-                                type="email"
-                                name=""
+                                type="password"
+                                onChange={e => setPassword(e.target.value)}
+                                name="password"
                             />
                         </div>
                         <div className="font-normal text-[#878787] text-xs mb-10">
                             <p>By continuing, you agree to Flipkart's <span className="text-[#2874f0]">Terms of use</span> and <span className="text-[#2874f0]">Privacy Policy.</span></p>
                         </div>
                         <div className="mx-auto">
-                            <button className="bg-[#fb641b] w-full text-white h-12 font-bold text-base">Login</button>
+                            <button
+                                type='submit'
+                                className="bg-[#fb641b] w-full text-white h-12 font-bold text-base">
+                                Login
+                            </button>
                         </div>
                     </form>
 

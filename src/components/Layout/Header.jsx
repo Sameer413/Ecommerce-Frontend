@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/flipkart-logo.png'
 import plus from '../../assets/plus-flipkart.png'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { FaShoppingCart, FaBars } from 'react-icons/fa'
+import { FaShoppingCart, FaBars, FaUserCircle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Search from '../../container/Search'
 
 
 
-const Header = () => {
+const Header = ({ isAuthenticated, user }) => {
 
+    const [click, setClick] = useState(false);
+
+    const handleClick = () => {
+        return setClick(!click);
+    }
 
     return (
-        <header className="w-full bg-[#2874f0] lg:h-[56px] h-[100px] fixed top-0 z-10">
+        <header className="w-full bg-[#2874f0] lg:h-[56px] h-[100px] fixed top-0 z-10 ">
             <div className="flex  lg:w-full lg:justify-center lg:m-[auto] h-full items-center max-w-7xl -mt-5">
 
                 <div className="lg:hidden visible ml-6 mx-2">{<FaBars size={20} color='white' />}</div>
@@ -39,14 +44,33 @@ const Header = () => {
                 <Search />
 
                 {/* login */}
-                <div
-                    className="lg:bg-white bg-none mx-3 py-1 px-10 rounded-[2px] cursor-pointer h-9 lg:static absolute right-2">
-                    <Link
-                        to={"/login"}
-                        className="font-bold lg:text-[#2874f0] text-white text-[16px]">
-                        Login
-                    </Link>
-                </div>
+                {isAuthenticated ? (
+                    <>
+                        <div
+                            className="bg-white rounded-[100%] cursor-pointer lg:static absolute right-14">
+                            <Link to={"/"}>
+                                <FaUserCircle size={35} color='#878787' />
+                            </Link>
+                        </div>
+
+                        {/* <div className="">
+                            <ul>
+                                <li>sdsjds</li>
+                                <li>sdsff</li>
+                                <li>sdfdsf</li>
+                            </ul>
+                        </div> */}
+                    </>
+                ) : (
+                    <div
+                        className="lg:bg-white bg-none mx-3 py-1 px-10 rounded-[2px] cursor-pointer h-9 lg:static absolute right-2">
+                        <Link
+                            to={"/login"}
+                            className="font-bold lg:text-[#2874f0] text-white text-[16px]">
+                            Login
+                        </Link>
+                    </div>
+                )}
 
 
 
@@ -63,9 +87,11 @@ const Header = () => {
                 </div>
 
                 {/* cart */}
-                <div className="mx-3 flex text-white font-bold items-center gap-1 max-w-[150px] right-2 absolute lg:static">
-                    {<FaShoppingCart size={20} />} <span className="lg:block hidden">Cart</span>
-                </div>
+                <Link to={'/me/cart'}>
+                    <div className="mx-3 flex text-white font-bold items-center gap-1 max-w-[150px] right-2 absolute lg:static">
+                        {<FaShoppingCart size={20} />} <span className="lg:block hidden">Cart</span>
+                    </div>
+                </Link>
             </div>
         </header>
     )

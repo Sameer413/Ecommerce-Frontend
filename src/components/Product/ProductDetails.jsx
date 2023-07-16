@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import productD from '../../assets/productD.webp'
 import { FaShoppingCart } from 'react-icons/fa'
 import { AiFillThunderbolt } from 'react-icons/ai'
 import ProductDetailInfo from '../../container/ProductDetailInfo'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../redux/actions/ProductActions'
+import { useParams } from 'react-router-dom'
+
 
 const ProductDetails = () => {
+
+    const dispatch = useDispatch();
+
+    const { product, loading } = useSelector(state => state.product)
+
+    const params = useParams();
+
+    useEffect(() => {
+        dispatch(getProducts(params.id))
+    }, [dispatch, params.id])
+
+
+
     return (
         <div className="lg:pt-14 pt-24 lg:max-w-[1366px] m-auto lg:min-w-[1128px]">
             <div className="p-4 bg-white lg:flex ">
@@ -54,7 +71,14 @@ const ProductDetails = () => {
                     </div>
                 </div>
                 <div className="block lg:w-[60%]">
-                    <ProductDetailInfo />
+                    <ProductDetailInfo
+                        productName={product?.productName}
+                        price={product?.price}
+                        description={product?.description}
+                        rating={product?.rating}
+                        reviews={product?.reviews.length}
+                        stock={product?.stock}
+                    />
                     {/* Review component soon */}
                 </div>
             </div>

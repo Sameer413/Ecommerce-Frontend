@@ -5,7 +5,7 @@ import Trending from '../../components/Home/Trending'
 
 const Home = () => {
     return (
-        <div className="lg:pt-14 pt-24">
+        <div className="lg:pt-14 pt-24 ">
             {/* Category */}
             <div className="bg-white border-b-[1px] overflow-x-scroll shadow-sm">
                 <Category />
